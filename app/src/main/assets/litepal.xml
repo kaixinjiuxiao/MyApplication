@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="myapplication" />
+
+    <version value="1" />
+
+    <list>
+        <mapping class="com.example.dz.myapplication.db.Province" />
+        <mapping class="com.example.dz.myapplication.db.City" />
+        <mapping class="com.example.dz.myapplication.db.County" />
+    </list>
+
+</litepal>
