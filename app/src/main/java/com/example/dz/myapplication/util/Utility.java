@@ -1,10 +1,13 @@
 package com.example.dz.myapplication.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.dz.myapplication.db.City;
 import com.example.dz.myapplication.db.County;
 import com.example.dz.myapplication.db.Province;
+import com.example.dz.myapplication.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -71,8 +74,9 @@ public class Utility {
                     JSONObject cityObject = allCounties.getJSONObject(i);
                     County county = new County();
                     county.setCountyName(cityObject.getString("name"));
-                    county.setCityId(cityObject.getInt("id"));
+                    county.setWeatherId(cityObject.getString("weather_id"));
                     county.setCityId(cityId);
+                    Log.e("tag","county"+county.toString());
                     county.save();
                 }
                 return true;
@@ -81,5 +85,18 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            Log.e("tag","神兵"+response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return  new Gson().fromJson(weatherContent,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
