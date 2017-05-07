@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/colorAccent"
-        android:text="Hello World!"
-        />
+   <fragment
+       android:id="@+id/choose_area_fragment"
+       android:name="com.example.dz.myapplication.ChooseAreaFragment"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
-</LinearLayout>
+</FrameLayout>
